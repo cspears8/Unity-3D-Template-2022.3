@@ -4,12 +4,14 @@ using UnityEngine.UIElements;
 
 namespace DS.Windows
 {
-    public class DSEditor : EditorWindow
+    using Utilites;
+    
+    public class DSEditorWindow : EditorWindow
     {
         [MenuItem("Window/DS/Dialogue Graph")]
         public static void Open()
         {
-           GetWindow<DSEditor>("Dialogue Graph");
+           GetWindow<DSEditorWindow>("Dialogue Graph");
         }
 
         private void CreateGUI()
@@ -19,9 +21,10 @@ namespace DS.Windows
             AddStyles();
         }
 
+        #region Elements Addition
         private void AddGraphView()
         {
-            DSGraphView graphView = new DSGraphView();
+            DSGraphView graphView = new DSGraphView(this);
             
             graphView.StretchToParentSize();
             
@@ -29,10 +32,11 @@ namespace DS.Windows
         }
 
         private void AddStyles()
-        {   
-            StyleSheet styleSheet = EditorGUIUtility.Load("DialogueSystem/DSVariables.uss") as StyleSheet;
-            
-            rootVisualElement.styleSheets.Add(styleSheet);
+        {
+            rootVisualElement.AddStyleSheets("DialogueSystem/DSVariables.uss");
         }
+        #endregion
+
+
     }
 }
