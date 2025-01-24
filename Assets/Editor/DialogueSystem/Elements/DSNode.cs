@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using DS.Data.Save;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -12,19 +14,21 @@ namespace DS.Elements
     
     public class DSNode : Node
     {
+        public string ID { get; set; }
         public string DialogueName { get; set; }
-        public List<string> Choices { get; set; }
+        public List<DSChoiceSaveData> Choices { get; set; }
         public string Text { get; set; }
         public DSDialogueType DialogueType { get; set; }
-        public Group Group { get; set; }
+        public DSGroup Group { get; set; }
 
-        private DSGraphView graphView;
+        protected DSGraphView graphView;
         private Color defaultBackgroundColor;
         
         public virtual void Initialize(DSGraphView dsGraphView, Vector2 position)
         {
-            DialogueName = "Dialogue Name";
-            Choices = new List<string>();
+            ID = Guid.NewGuid().ToString();
+            DialogueName = "DialogueName";
+            Choices = new List<DSChoiceSaveData>();
             Text = "Dialogue text.";
 
             graphView = dsGraphView;
@@ -35,28 +39,42 @@ namespace DS.Elements
             mainContainer.AddToClassList("ds-node_main-container");
             extensionContainer.AddToClassList("ds-node_extension-container");
         }
+        
+        #region Overidden Methods
+        public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
+        {
+            evt.menu.AppendAction("Disconnect Input Ports", actionEvent => DisconnectInputPorts());
+            evt.menu.AppendAction("Disconnect Output Ports", actionEvent => DisconnectOutputPorts());
+            
+            base.BuildContextualMenu(evt);
+        }
+        #endregion
 
         public virtual void Draw()
         {
             //Title Container
-            TextField dialogueNameTextField = DSElementUtility.CreateTextField(DialogueName, callback =>
+            TextField dialogueNameTextField = DSElementUtility.CreateTextField(DialogueName, null, callback =>
             {
+                TextField target = callback.target as TextField;
+
+                target.value = callback.newValue.RemoveWhitespaces().RemoveSpecialCharacters();
+                
                 if (Group == null)
                 {
                     graphView.RemoveUngroupedNode(this);
 
-                    DialogueName = callback.newValue;
+                    DialogueName = target.value;
 
                     graphView.AddUngroupedNode(this);
                     
                     return;
                 }
 
-                Group currentGroup = Group;
+                DSGroup currentGroup = Group;
                 
                 graphView.RemoveGroupedNode(this, Group);
 
-                DialogueName = callback.newValue;
+                DialogueName = target.value;
                 
                 graphView.AddGroupedNode(this, currentGroup);
             });
@@ -97,6 +115,37 @@ namespace DS.Elements
             extensionContainer.Add(customDataContainer);
         }
 
+        #region Utilitiy Methods
+
+        public void DisconnectAllPorts()
+        {
+            DisconnectInputPorts();
+            DisconnectOutputPorts();
+        }
+
+        private void DisconnectInputPorts()
+        {
+            DisconnectPorts(inputContainer);
+        }
+        
+        private void DisconnectOutputPorts()
+        {
+            DisconnectPorts(outputContainer);
+        }
+
+        private void DisconnectPorts(VisualElement container)
+        {
+            foreach (Port port in container.Children())
+            {
+                if (!port.connected)
+                {
+                    continue;
+                }
+                
+                graphView.DeleteElements(port.connections);
+            }
+        }
+
         public void SetErrorStyle(Color color)
         {
             mainContainer.style.backgroundColor = color;
@@ -106,5 +155,6 @@ namespace DS.Elements
         {
             mainContainer.style.backgroundColor = defaultBackgroundColor;
         }
+        #endregion
     }
 }
