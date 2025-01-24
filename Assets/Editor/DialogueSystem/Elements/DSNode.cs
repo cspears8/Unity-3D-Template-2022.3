@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using DS.Data.Save;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -58,7 +59,22 @@ namespace DS.Elements
                 TextField target = callback.target as TextField;
 
                 target.value = callback.newValue.RemoveWhitespaces().RemoveSpecialCharacters();
-                
+
+                if (string.IsNullOrEmpty(target.value))
+                {
+                    if (!string.IsNullOrEmpty(DialogueName))
+                    {
+                        ++graphView.NameErrorsAmount;
+                    }
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(DialogueName))
+                    {
+                        --graphView.NameErrorsAmount;
+                    }
+                }
+
                 if (Group == null)
                 {
                     graphView.RemoveUngroupedNode(this);
@@ -101,7 +117,10 @@ namespace DS.Elements
 
             Foldout textFoldout = DSElementUtility.CreateFoldout("Dialogue Text");
             
-            TextField textTextField = DSElementUtility.CreateTextArea(Text);
+            TextField textTextField = DSElementUtility.CreateTextArea(Text, null, callback =>
+            {
+                Text = callback.newValue;
+            });
             
             textTextField.AddClasses(
                 "ds-node_textfield",
@@ -144,6 +163,13 @@ namespace DS.Elements
                 
                 graphView.DeleteElements(port.connections);
             }
+        }
+
+        public bool IsStartingNode()
+        {
+            Port inputPort = inputContainer.Children().First() as Port;
+
+            return !inputPort.connected;
         }
 
         public void SetErrorStyle(Color color)
