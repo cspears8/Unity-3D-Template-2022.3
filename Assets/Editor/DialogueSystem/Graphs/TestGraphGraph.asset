@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a074cd2aa9f8eb42bfcd623418be6b6, type: 3}
+  m_Name: TestGraphGraph
+  m_EditorClassIdentifier: 
+  <FileName>k__BackingField: TestGraph
+  <Groups>k__BackingField:
+  - <ID>k__BackingField: bab71bec-a31e-4e4a-9800-3bbf1be4f41b
+    <Name>k__BackingField: TestGroup
+    <Position>k__BackingField: {x: -67.19999, y: 66.39998}
+  <Nodes>k__BackingField:
+  - <ID>k__BackingField: 365574c8-4e3e-4655-8186-ea815768dd35
+    <Name>k__BackingField: Test2
+    <Text>k__BackingField: Dialogue text.
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: bab71bec-a31e-4e4a-9800-3bbf1be4f41b
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 324.8, y: 126.399994}
+  - <ID>k__BackingField: d4ba0d15-d4a8-467a-a444-ce2ff8c88267
+    <Name>k__BackingField: Test
+    <Text>k__BackingField: Dialogue text.
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: bab71bec-a31e-4e4a-9800-3bbf1be4f41b
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 324.8, y: 298.40002}
+  - <ID>k__BackingField: 60112607-a2d3-42dc-82ae-78d3b3edbfa0
+    <Name>k__BackingField: MultTest
+    <Text>k__BackingField: Dialogue text.
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: New Choice
+      <NodeID>k__BackingField: 365574c8-4e3e-4655-8186-ea815768dd35
+    - <Text>k__BackingField: New Choice
+      <NodeID>k__BackingField: d4ba0d15-d4a8-467a-a444-ce2ff8c88267
+    <GroupID>k__BackingField: bab71bec-a31e-4e4a-9800-3bbf1be4f41b
+    <DialogueType>k__BackingField: 1
+    <Position>k__BackingField: {x: -41.6, y: 181.59999}
+  <OldGroupNames>k__BackingField:
+  - TestGroup
+  <OldUngroupedNodeNames>k__BackingField: []
+  <OldGroupedNodeNames>k__BackingField:
+    list:
+    - Key: TestGroup
+      Value:
+      - Test2
+      - Test
+      - MultTest
