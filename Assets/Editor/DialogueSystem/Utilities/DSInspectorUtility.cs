@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -7,6 +9,15 @@ namespace DS.Utilities
 {
     public static class DSInspectorUtility
     {
+        public static void DrawDisabledFields(Action action)
+        {
+            EditorGUI.BeginDisabledGroup(true);
+            
+            action.Invoke();
+            
+            EditorGUI.EndDisabledGroup();
+        }
+
         public static void DrawHeader(string label)
         {
             EditorGUILayout.LabelField(label, EditorStyles.boldLabel);
