@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a074cd2aa9f8eb42bfcd623418be6b6, type: 3}
   m_Name: TestGraphGraph
   m_EditorClassIdentifier: 
-  <FileName>k__BackingField: TestGraph
+  <FileName>k__BackingField: 
   <Groups>k__BackingField:
   - <ID>k__BackingField: bab71bec-a31e-4e4a-9800-3bbf1be4f41b
     <Name>k__BackingField: TestGroup
-    <Position>k__BackingField: {x: -67.19999, y: 66.39998}
+    <Position>k__BackingField: {x: -67.2, y: 66.40001}
   <Nodes>k__BackingField:
   - <ID>k__BackingField: 365574c8-4e3e-4655-8186-ea815768dd35
     <Name>k__BackingField: Test2
@@ -26,7 +26,7 @@ MonoBehaviour:
       <NodeID>k__BackingField: 
     <GroupID>k__BackingField: bab71bec-a31e-4e4a-9800-3bbf1be4f41b
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 324.8, y: 126.399994}
+    <Position>k__BackingField: {x: 324.8, y: 126.40001}
   - <ID>k__BackingField: d4ba0d15-d4a8-467a-a444-ce2ff8c88267
     <Name>k__BackingField: Test
     <Text>k__BackingField: Dialogue text.
@@ -35,7 +35,7 @@ MonoBehaviour:
       <NodeID>k__BackingField: 
     <GroupID>k__BackingField: bab71bec-a31e-4e4a-9800-3bbf1be4f41b
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 324.8, y: 298.40002}
+    <Position>k__BackingField: {x: 324.8, y: 298.4}
   - <ID>k__BackingField: 60112607-a2d3-42dc-82ae-78d3b3edbfa0
     <Name>k__BackingField: MultTest
     <Text>k__BackingField: Dialogue text.
@@ -46,7 +46,7 @@ MonoBehaviour:
       <NodeID>k__BackingField: d4ba0d15-d4a8-467a-a444-ce2ff8c88267
     <GroupID>k__BackingField: bab71bec-a31e-4e4a-9800-3bbf1be4f41b
     <DialogueType>k__BackingField: 1
-    <Position>k__BackingField: {x: -41.6, y: 181.59999}
+    <Position>k__BackingField: {x: -41.6, y: 181.6}
   <OldGroupNames>k__BackingField:
   - TestGroup
   <OldUngroupedNodeNames>k__BackingField: []

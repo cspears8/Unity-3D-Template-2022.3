@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d9f2fece535bb049a5a0047524d1782, type: 3}
-  m_Name: TestGraph
+  m_Name: Groups
   m_EditorClassIdentifier: 
   <FileName>k__BackingField: 
   <DialogueGroups>k__BackingField:
     list:
-    - Key: {fileID: 11400000, guid: d5455b0a999d6e04794d46285fa32fb5, type: 2}
-      Value:
-      - {fileID: 11400000, guid: 4223632aa9149e544bc03514888dccae, type: 2}
-      - {fileID: 11400000, guid: 364f31b6f056b724a98f782ddc0a3530, type: 2}
-      - {fileID: 11400000, guid: d75c8bcc130984545898d483333ddb50, type: 2}
+    - Key: {fileID: 11400000, guid: 2f170ef1ccd2efb448cdd5dc85e2133d, type: 2}
+      Value: []
+    - Key: {fileID: 11400000, guid: c888abf739dfce044a395211acf86fd0, type: 2}
+      Value: []
   <UngroupedDialogues>k__BackingField: []
