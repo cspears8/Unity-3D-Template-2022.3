@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 2800000, guid: c55cc35e40a404507a40a804fa1d4852, type: 3}
   iconMaxWidth: 128
-  projectName: Replace this Project Name
-  author: Replace this with your name
-  modificationDate: 2024-09-04
+  projectName: Node Dialogue System
+  author: Connor Spears
+  modificationDate: 2025-01-26
   sections:
   - heading: 0. What is the link to your project on itch.io?
     text: <i>(Just paste the link here.)</i>
